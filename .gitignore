@@ -1,0 +1,13 @@
+# Ansible Vault - не пушить ключ
+vault_key
+*.vault_key
+.vault/
+.vault_pass
+.vault_password
+vault-password.txt
+vault_key*
+
+# Ansible - локальные конфиги и кэш
+.ansible/
+*.retry
+*.log

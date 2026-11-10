@@ -1,0 +1,28 @@
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "MongoDB": {
+    "ConnectionString": "mongodb://{{ mongo_host }}:{{ mongo_port }}",
+    "DatabaseName": "{{ mongo_db_name }}",
+    "CollectionName": "{{ mongo_collection }}"
+  },
+  "Redis": {
+    "ConnectionString": "{{ redis_host }}:{{ redis_port }},defaultDatabase=0"
+  },
+  "Kafka": {
+    "BootstrapServers": "{{ kafka_host }}:{{ kafka_port }}",
+    "ConfirmationRequestsTopic": "{{ kafka_requests_topic }}",
+    "ConfirmationResponsesTopic": "{{ kafka_responses_topic }}"
+  },
+  "Jwt": {
+    "Key": "{{ jwt_key }}",
+    "Issuer": "{{ jwt_issuer }}",
+    "Audience": "{{ jwt_audience }}",
+    "ExpiryMinutes": {{ jwt_expiry_minutes }}
+  },
+  "AllowedHosts": "{{ allowed_hosts }}"
+}

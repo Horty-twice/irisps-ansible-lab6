@@ -1,0 +1,15 @@
+plugin: community.docker.docker_containers
+docker_host: unix:///var/run/docker.sock
+stopped: false
+
+filters:
+  - include: >-
+      docker_config.Labels.get('com.docker.compose.project') == 'irisps'
+      and docker_config.Labels.get('com.docker.compose.service') in
+      ['irisps-numismaticclub', 'irisps-userconfirmation', 'irisps-lab1']
+  - exclude: true
+
+keyed_groups:
+  - key: docker_config.Labels['com.docker.compose.service']
+    prefix: svc
+    separator: "_"

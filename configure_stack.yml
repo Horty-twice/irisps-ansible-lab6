@@ -1,0 +1,29 @@
+---
+- name: Настройка irisps-numismaticclub (генерация appsettings.json)
+  hosts: numismaticclub
+  gather_facts: true
+  
+  tasks:
+    - name: Создать директорию /home/ansible/app/config
+      ansible.builtin.file:
+        path: /home/ansible/app/config
+        state: directory
+        mode: "0755"
+
+    - name: Сгенерировать appsettings.json из Jinja2-шаблона
+      ansible.builtin.template:
+        src: appsettings.json.j2
+        dest: /home/ansible/app/config/appsettings.json
+        mode: "0644"
+      register: template_result
+
+    - name: Проверить, что файл создан (проверка shell + when)
+      ansible.builtin.command:
+        cmd: test -f /home/ansible/app/config/appsettings.json
+      register: file_check
+      changed_when: false
+      failed_when: file_check.rc != 0
+
+    - name: Вывести размер сгенерированного файла
+      ansible.builtin.debug:
+        msg: "appsettings.json успешно сгенерирован ({{ template_result.dest }})"

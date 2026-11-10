@@ -1,0 +1,26 @@
+# Переменные для генерации appsettings.json (irisps-numismaticclub)
+
+# MongoDB
+mongo_host: irisps-mongo
+mongo_port: 27017
+mongo_db_name: NumismaticClub_IRiSPS
+mongo_collection: Coins
+
+# Redis
+redis_host: irisps-redis
+redis_port: 6379
+
+# Kafka
+kafka_host: irisps-kafka
+kafka_port: 9092
+kafka_requests_topic: irisps-coin-confirmation-requests
+kafka_responses_topic: irisps-coin-confirmation-responses
+
+# JWT
+jwt_key: "sUp3rS3cr3tK3y_!@#$%^&*()_+_for_JWT_which_is_32_chars_minimum"
+jwt_issuer: UserConfirmationService
+jwt_audience: NumismaticClub
+jwt_expiry_minutes: 60
+
+# Прочее
+allowed_hosts: "*"
