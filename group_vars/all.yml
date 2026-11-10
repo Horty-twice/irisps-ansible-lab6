@@ -24,3 +24,4 @@ jwt_expiry_minutes: 60
 
 # Прочее
 allowed_hosts: "*"
+# Test CI/CD auto-trigger 2026-11-11
