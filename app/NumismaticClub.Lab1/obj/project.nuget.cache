@@ -1,0 +1,48 @@
+{
+  "version": 2,
+  "dgSpecHash": "p3idKaotkEM=",
+  "success": true,
+  "projectFilePath": "D:\\my_projects\\NumismaticClub.Lab1\\NumismaticClub.Lab1\\NumismaticClub.Lab1.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\user\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.5\\microsoft.aspnetcore.openapi.10.0.5.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\microsoft.extensions.apidescription.server\\10.0.0\\microsoft.extensions.apidescription.server.10.0.0.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\microsoft.openapi\\2.4.1\\microsoft.openapi.2.4.1.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\opentelemetry\\1.15.2\\opentelemetry.1.15.2.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\opentelemetry.api\\1.15.2\\opentelemetry.api.1.15.2.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\opentelemetry.api.providerbuilderextensions\\1.15.2\\opentelemetry.api.providerbuilderextensions.1.15.2.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\opentelemetry.exporter.prometheus.aspnetcore\\1.15.2-beta.1\\opentelemetry.exporter.prometheus.aspnetcore.1.15.2-beta.1.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\opentelemetry.extensions.hosting\\1.15.2\\opentelemetry.extensions.hosting.1.15.2.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\opentelemetry.instrumentation.aspnetcore\\1.15.1\\opentelemetry.instrumentation.aspnetcore.1.15.1.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\opentelemetry.instrumentation.process\\1.15.0-beta.1\\opentelemetry.instrumentation.process.1.15.0-beta.1.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\swashbuckle.aspnetcore\\10.1.7\\swashbuckle.aspnetcore.10.1.7.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\10.1.7\\swashbuckle.aspnetcore.swagger.10.1.7.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\10.1.7\\swashbuckle.aspnetcore.swaggergen.10.1.7.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\10.1.7\\swashbuckle.aspnetcore.swaggerui.10.1.7.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1903",
+      "level": "Warning",
+      "message": "У пакета \"Microsoft.OpenApi\" 2.4.1 есть известная уязвимость https://github.com/advisories/GHSA-v5pm-xwqc-g5wc (уровень серьезности: высокий уровень)",
+      "projectPath": "D:\\my_projects\\NumismaticClub.Lab1\\NumismaticClub.Lab1\\NumismaticClub.Lab1.csproj",
+      "warningLevel": 1,
+      "filePath": "D:\\my_projects\\NumismaticClub.Lab1\\NumismaticClub.Lab1\\NumismaticClub.Lab1.csproj",
+      "libraryId": "Microsoft.OpenApi",
+      "targetGraphs": [
+        "net10.0"
+      ]
+    },
+    {
+      "code": "NU1902",
+      "level": "Warning",
+      "message": "У пакета \"OpenTelemetry.Api\" 1.15.2 есть известная уязвимость https://github.com/advisories/GHSA-g94r-2vxg-569j (уровень серьезности: средний уровень)",
+      "projectPath": "D:\\my_projects\\NumismaticClub.Lab1\\NumismaticClub.Lab1\\NumismaticClub.Lab1.csproj",
+      "warningLevel": 1,
+      "filePath": "D:\\my_projects\\NumismaticClub.Lab1\\NumismaticClub.Lab1\\NumismaticClub.Lab1.csproj",
+      "libraryId": "OpenTelemetry.Api",
+      "targetGraphs": [
+        "net10.0"
+      ]
+    }
+  ]
+}

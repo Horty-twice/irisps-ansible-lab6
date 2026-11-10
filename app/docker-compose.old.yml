@@ -1,0 +1,48 @@
+name: irisps
+
+services:
+  irisps-zookeeper:
+    image: zookeeper
+    container_name: irisps-zookeeper
+    ports:
+      - "2181:2181"
+    restart: unless-stopped
+
+  irisps-kafka:
+    image: confluentinc/cp-kafka:7.4.0
+    container_name: irisps-kafka
+    depends_on:
+      - irisps-zookeeper
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: irisps-zookeeper:2181
+      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://127.0.0.1:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
+    restart: unless-stopped
+
+  irisps-redis:
+    image: redis
+    container_name: irisps-redis
+    ports:
+      - "6379:6379"
+    restart: unless-stopped
+
+  irisps-mongo:
+    image: mongo
+    container_name: irisps-mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - irisps-mongo-data:/data/db
+    restart: unless-stopped
+
+volumes:
+  irisps-mongo-data:

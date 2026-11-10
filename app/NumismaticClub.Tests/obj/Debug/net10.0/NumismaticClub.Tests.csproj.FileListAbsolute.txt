@@ -1,0 +1,15 @@
+D:\my_projects\NumismaticClub\NumismaticClub.Tests\bin\Debug\net10.0\NumismaticClub.Tests.exe
+D:\my_projects\NumismaticClub\NumismaticClub.Tests\bin\Debug\net10.0\NumismaticClub.Tests.deps.json
+D:\my_projects\NumismaticClub\NumismaticClub.Tests\bin\Debug\net10.0\NumismaticClub.Tests.runtimeconfig.json
+D:\my_projects\NumismaticClub\NumismaticClub.Tests\bin\Debug\net10.0\NumismaticClub.Tests.dll
+D:\my_projects\NumismaticClub\NumismaticClub.Tests\bin\Debug\net10.0\NumismaticClub.Tests.pdb
+D:\my_projects\NumismaticClub\NumismaticClub.Tests\obj\Debug\net10.0\NumismaticClub.Tests.GeneratedMSBuildEditorConfig.editorconfig
+D:\my_projects\NumismaticClub\NumismaticClub.Tests\obj\Debug\net10.0\NumismaticClub.Tests.AssemblyInfoInputs.cache
+D:\my_projects\NumismaticClub\NumismaticClub.Tests\obj\Debug\net10.0\NumismaticClub.Tests.AssemblyInfo.cs
+D:\my_projects\NumismaticClub\NumismaticClub.Tests\obj\Debug\net10.0\NumismaticClub.Tests.csproj.CoreCompileInputs.cache
+D:\my_projects\NumismaticClub\NumismaticClub.Tests\obj\Debug\net10.0\NumismaticClub.Tests.dll
+D:\my_projects\NumismaticClub\NumismaticClub.Tests\obj\Debug\net10.0\refint\NumismaticClub.Tests.dll
+D:\my_projects\NumismaticClub\NumismaticClub.Tests\obj\Debug\net10.0\NumismaticClub.Tests.pdb
+D:\my_projects\NumismaticClub\NumismaticClub.Tests\obj\Debug\net10.0\NumismaticClub.Tests.genruntimeconfig.cache
+D:\my_projects\NumismaticClub\NumismaticClub.Tests\obj\Debug\net10.0\ref\NumismaticClub.Tests.dll
+D:\my_projects\NumismaticClub\NumismaticClub.Tests\obj\Debug\net10.0\NumismaticClub.Tests.sourcelink.json

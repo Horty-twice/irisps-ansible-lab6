@@ -1,0 +1,177 @@
+name: irisps
+
+networks:
+  irisps-network:
+    driver: bridge
+
+volumes:
+  irisps-mongo-data:
+  irisps-prometheus-data:
+  irisps-grafana-data:
+
+services:
+
+  # ИНФРАСТРУКТУРА
+
+  irisps-zookeeper:
+    image: zookeeper:latest
+    container_name: irisps-zookeeper
+    networks:
+      - irisps-network
+    ports:
+      - "2182:2181"
+    restart: unless-stopped
+
+  irisps-kafka:
+    image: confluentinc/cp-kafka:7.4.0
+    container_name: irisps-kafka
+    depends_on:
+      - irisps-zookeeper
+    networks:
+      - irisps-network
+    ports:
+      - "9093:9092"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: irisps-zookeeper:2181
+      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://irisps-kafka:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
+    healthcheck:
+      test: ["CMD-SHELL", "kafka-broker-api-versions --bootstrap-server irisps-kafka:9092 || exit 1"]
+      interval: 10s
+      timeout: 10s
+      retries: 10
+      start_period: 30s
+    restart: unless-stopped
+
+  irisps-redis:
+    image: redis:latest
+    container_name: irisps-redis
+    networks:
+      - irisps-network
+    ports:
+      - "6380:6379"
+    restart: unless-stopped
+
+  irisps-mongo:
+    image: mongo:latest
+    container_name: irisps-mongo
+    networks:
+      - irisps-network
+    ports:
+      - "27018:27017"
+    volumes:
+      - irisps-mongo-data:/data/db
+    restart: unless-stopped
+
+  # МИКРОСЕРВИСЫ
+
+  irisps-numismaticclub:
+    image: numismaticclub:latest
+    build:
+      context: ./NumismaticClub
+      dockerfile: Dockerfile
+    container_name: irisps-numismaticclub
+    depends_on:
+      irisps-mongo:
+        condition: service_started
+      irisps-redis:
+        condition: service_started
+      irisps-kafka:
+        condition: service_healthy
+    networks:
+      - irisps-network
+    ports:
+      - "7230:8080"
+      - "2201:22" 
+    environment:
+      ASPNETCORE_ENVIRONMENT: Docker
+    restart: unless-stopped
+
+  irisps-lab1:
+    image: numismaticclub-lab1:latest
+    build:
+      context: ./NumismaticClub.Lab1
+      dockerfile: Dockerfile
+    container_name: irisps-lab1
+    networks:
+      - irisps-network
+    ports:
+      - "7264:8080"
+      - "2203:22"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Docker
+    restart: unless-stopped
+
+  irisps-userconfirmation:
+    image: irisps-userconfirmation:latest
+    build:
+      context: ./UserConfirmationService
+      dockerfile: Dockerfile
+    container_name: irisps-userconfirmation
+    depends_on:
+      irisps-mongo:
+        condition: service_started
+      irisps-kafka:
+        condition: service_healthy
+    networks:
+      - irisps-network
+    ports:
+      - "7140:8080"
+      - "2202:22"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Docker
+    restart: unless-stopped
+
+  irisps-apigateway:
+    image: irisps-apigateway:latest
+    build:
+      context: ./ApiGateway
+      dockerfile: Dockerfile
+    container_name: irisps-apigateway
+    depends_on:
+      - irisps-numismaticclub
+      - irisps-userconfirmation
+    networks:
+      - irisps-network
+    ports:
+      - "5000:8080"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Docker
+    restart: unless-stopped
+
+  # МОНИТОРИНГ
+
+  irisps-prometheus:
+    image: prom/prometheus:latest
+    container_name: irisps-prometheus
+    networks:
+      - irisps-network
+    ports:
+      - "9091:9090"
+    volumes:
+      - ./prometheus.docker.yml:/etc/prometheus/prometheus.yml:ro
+      - irisps-prometheus-data:/prometheus
+    restart: unless-stopped
+
+  irisps-grafana:
+    image: grafana/grafana:latest
+    container_name: irisps-grafana
+    depends_on:
+      - irisps-prometheus
+    networks:
+      - irisps-network
+    ports:
+      - "3001:3000"
+    volumes:
+      - irisps-grafana-data:/var/lib/grafana
+    environment:
+      GF_SECURITY_ADMIN_USER: admin
+      GF_SECURITY_ADMIN_PASSWORD: admin
+    restart: unless-stopped

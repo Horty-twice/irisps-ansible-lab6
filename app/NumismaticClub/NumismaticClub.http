@@ -1,0 +1,6 @@
+@NumismaticClub_HostAddress = http://localhost:5210
+
+GET {{NumismaticClub_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

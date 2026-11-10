@@ -1,0 +1,78 @@
+{
+  "version": 2,
+  "dgSpecHash": "A9GPsyUaqc4=",
+  "success": true,
+  "projectFilePath": "D:\\my_projects\\NumismaticClub\\NumismaticClub\\NumismaticClub.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\user\\.nuget\\packages\\confluent.kafka\\2.14.0\\confluent.kafka.2.14.0.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\dnsclient\\1.6.1\\dnsclient.1.6.1.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\librdkafka.redist\\2.14.0\\librdkafka.redist.2.14.0.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\10.0.8\\microsoft.aspnetcore.authentication.jwtbearer.10.0.8.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\microsoft.extensions.caching.stackexchangeredis\\10.0.7\\microsoft.extensions.caching.stackexchangeredis.10.0.7.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\microsoft.identitymodel.abstractions\\8.18.0\\microsoft.identitymodel.abstractions.8.18.0.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\microsoft.identitymodel.jsonwebtokens\\8.18.0\\microsoft.identitymodel.jsonwebtokens.8.18.0.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\microsoft.identitymodel.logging\\8.18.0\\microsoft.identitymodel.logging.8.18.0.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\microsoft.identitymodel.protocols\\8.0.1\\microsoft.identitymodel.protocols.8.0.1.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\microsoft.identitymodel.protocols.openidconnect\\8.0.1\\microsoft.identitymodel.protocols.openidconnect.8.0.1.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\microsoft.identitymodel.tokens\\8.18.0\\microsoft.identitymodel.tokens.8.18.0.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\microsoft.openapi\\1.6.14\\microsoft.openapi.1.6.14.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\mongodb.bson\\3.7.1\\mongodb.bson.3.7.1.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\mongodb.driver\\3.7.1\\mongodb.driver.3.7.1.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\opentelemetry\\1.15.2\\opentelemetry.1.15.2.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\opentelemetry.api\\1.15.2\\opentelemetry.api.1.15.2.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\opentelemetry.api.providerbuilderextensions\\1.15.2\\opentelemetry.api.providerbuilderextensions.1.15.2.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\opentelemetry.exporter.prometheus.aspnetcore\\1.15.2-beta.1\\opentelemetry.exporter.prometheus.aspnetcore.1.15.2-beta.1.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\opentelemetry.extensions.hosting\\1.15.2\\opentelemetry.extensions.hosting.1.15.2.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\opentelemetry.instrumentation.aspnetcore\\1.15.1\\opentelemetry.instrumentation.aspnetcore.1.15.1.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\opentelemetry.instrumentation.process\\1.15.0-beta.1\\opentelemetry.instrumentation.process.1.15.0-beta.1.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\pipelines.sockets.unofficial\\2.2.8\\pipelines.sockets.unofficial.2.2.8.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\sharpcompress\\0.30.1\\sharpcompress.0.30.1.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\snappier\\1.0.0\\snappier.1.0.0.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\stackexchange.redis\\2.7.27\\stackexchange.redis.2.7.27.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\swashbuckle.aspnetcore\\6.9.0\\swashbuckle.aspnetcore.6.9.0.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.9.0\\swashbuckle.aspnetcore.swagger.6.9.0.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.9.0\\swashbuckle.aspnetcore.swaggergen.6.9.0.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.9.0\\swashbuckle.aspnetcore.swaggerui.6.9.0.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\system.identitymodel.tokens.jwt\\8.18.0\\system.identitymodel.tokens.jwt.8.18.0.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\zstdsharp.port\\0.7.3\\zstdsharp.port.0.7.3.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1902",
+      "level": "Warning",
+      "message": "У пакета \"OpenTelemetry.Api\" 1.15.2 есть известная уязвимость https://github.com/advisories/GHSA-g94r-2vxg-569j (уровень серьезности: средний уровень)",
+      "projectPath": "D:\\my_projects\\NumismaticClub\\NumismaticClub\\NumismaticClub.csproj",
+      "warningLevel": 1,
+      "filePath": "D:\\my_projects\\NumismaticClub\\NumismaticClub\\NumismaticClub.csproj",
+      "libraryId": "OpenTelemetry.Api",
+      "targetGraphs": [
+        "net10.0"
+      ]
+    },
+    {
+      "code": "NU1902",
+      "level": "Warning",
+      "message": "У пакета \"SharpCompress\" 0.30.1 есть известная уязвимость https://github.com/advisories/GHSA-6c8g-7p36-r338 (уровень серьезности: средний уровень)",
+      "projectPath": "D:\\my_projects\\NumismaticClub\\NumismaticClub\\NumismaticClub.csproj",
+      "warningLevel": 1,
+      "filePath": "D:\\my_projects\\NumismaticClub\\NumismaticClub\\NumismaticClub.csproj",
+      "libraryId": "SharpCompress",
+      "targetGraphs": [
+        "net10.0"
+      ]
+    },
+    {
+      "code": "NU1903",
+      "level": "Warning",
+      "message": "У пакета \"Snappier\" 1.0.0 есть известная уязвимость https://github.com/advisories/GHSA-pggp-6c3x-2xmx (уровень серьезности: высокий уровень)",
+      "projectPath": "D:\\my_projects\\NumismaticClub\\NumismaticClub\\NumismaticClub.csproj",
+      "warningLevel": 1,
+      "filePath": "D:\\my_projects\\NumismaticClub\\NumismaticClub\\NumismaticClub.csproj",
+      "libraryId": "Snappier",
+      "targetGraphs": [
+        "net10.0"
+      ]
+    }
+  ]
+}

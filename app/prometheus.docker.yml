@@ -1,0 +1,18 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  - job_name: "prometheus"
+    static_configs:
+      - targets: ["irisps-prometheus:9090"]
+
+  - job_name: "lab1"
+    static_configs:
+      - targets: ["irisps-lab1:8080"]
+    metrics_path: "/metrics"
+
+  - job_name: "lab2"
+    static_configs:
+      - targets: ["irisps-numismaticclub:8080"]
+    metrics_path: "/metrics"

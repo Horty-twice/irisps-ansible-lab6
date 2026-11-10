@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="ApiGateway/ApiGateway.csproj" Id="c8fbf785-c4b3-4564-8ce8-19e4a1afe29f" />
+  <Project Path="NumismaticClub.JwtTests/NumismaticClub.JwtTests.csproj" Id="223fca3e-a734-449d-8f06-36afefb5fad8" />
+  <Project Path="NumismaticClub.Tests/NumismaticClub.Tests.csproj" Id="a0004119-1f4b-473b-ad88-60dfeb59e4a6" />
+  <Project Path="NumismaticClub/NumismaticClub.csproj" />
+  <Project Path="UserConfirmationService/UserConfirmationService.csproj" Id="b6594080-5760-4e9a-a4ef-5adee9e2cd80" />
+</Solution>
