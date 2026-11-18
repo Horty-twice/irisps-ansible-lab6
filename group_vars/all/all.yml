@@ -17,7 +17,6 @@ kafka_requests_topic: irisps-coin-confirmation-requests
 kafka_responses_topic: irisps-coin-confirmation-responses
 
 # JWT
-jwt_key: "sUp3rS3cr3tK3y_!@#$%^&*()_+_for_JWT_which_is_32_chars_minimum"
 jwt_issuer: UserConfirmationService
 jwt_audience: NumismaticClub
 jwt_expiry_minutes: 60
@@ -26,3 +25,4 @@ jwt_expiry_minutes: 60
 allowed_hosts: "*"
 # Test CI/CD auto-trigger 2026-12-11
 # gg
+# New string for commit

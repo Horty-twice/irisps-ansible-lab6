@@ -1,0 +1,96 @@
+---
+- name: CI/CD Pipeline with GitOps (Pull Model)
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  vars:
+    repo_url: "git@github.com:Horty-twice/irisps-ansible-lab6.git"
+    repo_dest: "/home/student/irisps-ansible/repo"
+    project_dir: "/home/student/irisps-ansible/repo/app"
+
+  tasks:
+    # 1. FETCH (Получение изменений из Git)
+    - name: Fetch latest code from Git
+      ansible.builtin.git:
+        repo: "{{ repo_url }}"
+        dest: "{{ repo_dest }}"
+        version: main
+        update: yes
+      register: git_result
+
+    - name: Show commit information
+      ansible.builtin.debug:
+        msg: "Before: {{ git_result.before | default('N/A') }}, After: {{ git_result.after | default('N/A') }}, Changed: {{ git_result.changed }}"
+
+    # 2. CI ЭТАП (только если есть изменения)
+    - name: CI - Validate secrets encryption
+      ansible.builtin.command:
+        cmd: head -1 "{{ repo_dest }}/group_vars/secrets.yml"
+      register: secret_check
+      changed_when: false
+      when: git_result.changed
+
+    - name: CI - Assert secrets file is encrypted
+      ansible.builtin.assert:
+        that:
+          - "'$ANSIBLE_VAULT' in secret_check.stdout"
+        fail_msg: "STOP! Secrets file is NOT encrypted."
+        success_msg: "Secrets file is encrypted. OK."
+      when: git_result.changed and secret_check.stdout is defined
+
+    # 3. CD ЭТАП (только если CI прошел)
+    - name: CD - Build Docker images
+      ansible.builtin.command:
+        cmd: docker compose build
+        chdir: "{{ project_dir }}"
+      register: build_result
+      changed_when: true
+      when: git_result.changed
+
+    - name: CD - Start infrastructure (Kafka, Zookeeper, Mongo, Redis)
+      ansible.builtin.command:
+        cmd: docker compose up -d irisps-kafka irisps-zookeeper irisps-mongo irisps-redis
+        chdir: "{{ project_dir }}"
+      when: git_result.changed and build_result is succeeded
+      changed_when: true
+
+    - name: CD - Wait for Kafka to be healthy
+      ansible.builtin.command:
+        cmd: docker inspect --format="{{ '{{' }} .State.Health.Status {{ '}}' }}" irisps-kafka
+      register: kafka_health
+      until: kafka_health.stdout | trim == "healthy"
+      retries: 20
+      delay: 10
+      when: git_result.changed and build_result is succeeded
+      changed_when: false
+
+    - name: CD - Deploy application services
+      ansible.builtin.command:
+        cmd: docker compose up -d irisps-numismaticclub irisps-userconfirmation irisps-lab1 irisps-apigateway irisps-prometheus irisps-grafana
+        chdir: "{{ project_dir }}"
+      when: git_result.changed and build_result is succeeded
+      changed_when: true
+
+    # 4. АВТОМАТИЧЕСКОЕ ТЕСТИРОВАНИЕ (Smoke Test)
+    - name: CD - Run Smoke Test (Check API availability)
+      ansible.builtin.uri:
+        url: "http://localhost:7230/swagger/index.html"
+        method: GET
+        status_code: 200
+      register: api_test
+      until: api_test.status == 200
+      retries: 10
+      delay: 5
+      when: git_result.changed and build_result is succeeded
+
+    - name: CD - Success message
+      ansible.builtin.debug:
+        msg: "Deployment completed successfully for commit {{ git_result.after | default('N/A') }}."
+      when: git_result.changed
+
+    # 5. ОТСУТСТВИЕ ИЗМЕНЕНИЙ (Быстрая проверка)
+    - name: No changes - system is up to date
+      ansible.builtin.debug:
+        msg: "No new commits in repository. Skipping heavy CI/CD tasks."
+      when: not git_result.changed
