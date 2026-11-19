@@ -23,3 +23,4 @@ jwt_expiry_minutes: 60
 
 # Прочее
 allowed_hosts: "*"
+#19.11.2026
